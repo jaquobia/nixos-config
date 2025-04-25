@@ -167,6 +167,7 @@ programs = {
 
 	zsh.enable = true;
 	git.enable = true;
+	ssh.startAgent = true;
 	lazygit = {
 		package = pkgs.unstable.lazygit;
 		enable = true;
