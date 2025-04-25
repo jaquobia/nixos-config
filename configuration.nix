@@ -124,6 +124,7 @@ environment = {
 		wezterm
 		waypaper
 		wl-clipboard
+		unstable.yazi
 		zathura
 		zig
 		zls
@@ -161,10 +162,10 @@ programs = {
 	};
 	sway.enable = true;
 	firefox.enable = true;
-	yazi = {
-		package = unstable.yazi;
-		enable = true;
-	};
+	# yazi = {
+	# 	package = unstable.yazi;
+	# 	enable = true;
+	# };
 	thunar = {
 		enable = true;
 		plugins = with pkgs.xfce; [ 
