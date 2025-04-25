@@ -10,7 +10,7 @@
 			system = "x86_64-linux";
 			modules = [
 				#Import old configuration so system does not change
-				/etc/nixos/configuration.nix
+				./configuration.nix
 			];
 		};
 	};
