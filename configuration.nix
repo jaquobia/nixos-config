@@ -124,7 +124,7 @@ environment = {
 		wezterm
 		waypaper
 		wl-clipboard
-		#zathura
+		zathura
 		zig
 		zls
 	];
