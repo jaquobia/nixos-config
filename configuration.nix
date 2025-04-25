@@ -2,16 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, unstable, ... }:
 
-let
-	aagl = import( builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/release-24.11.tar.gz");
-in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      aagl.module
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -77,12 +73,6 @@ in
 		# Required by Vintage Story
 		"dotnet-runtime-7.0.20"
 	];
-	# Add unstable branch
-	packageOverrides = pkgs: {
-		unstable = import <nixos-unstable> {
-			config = config.nixpkgs.config;
-		};
-	};
   };
 
   # List packages installed in system profile. To search, run:
@@ -162,22 +152,17 @@ hardware = {
 programs = {
 	dconf.enable = true;
 
-	anime-game-launcher = {
-		enable = true;
-	};
-	honkers-railway-launcher.enable = true;
-
 	zsh.enable = true;
 	git.enable = true;
 	ssh.startAgent = true;
 	lazygit = {
-		package = pkgs.unstable.lazygit;
+		package = unstable.lazygit;
 		enable = true;
 	};
 	sway.enable = true;
 	firefox.enable = true;
 	yazi = {
-		package = pkgs.unstable.yazi;
+		package = unstable.yazi;
 		enable = true;
 		settings = {
 			#theme = (builtins.fromTOML ( builtins.readFile "$HOME/.config/yazi/theme.toml" ));
@@ -199,7 +184,7 @@ programs = {
 		enable = true;
 	};
 	waybar = {
-		package = pkgs.unstable.waybar;
+		package = unstable.waybar;
 		enable = true;
 	};
 };
