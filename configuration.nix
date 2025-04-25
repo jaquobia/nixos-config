@@ -164,9 +164,6 @@ programs = {
 	yazi = {
 		package = unstable.yazi;
 		enable = true;
-		settings = {
-			#theme = (builtins.fromTOML ( builtins.readFile "$HOME/.config/yazi/theme.toml" ));
-		};
 	};
 	thunar = {
 		enable = true;
