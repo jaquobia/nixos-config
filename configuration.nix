@@ -94,6 +94,7 @@ environment = {
 		bash
 		btop
 		dunst
+		file-roller
 		unstable.gale
 		gptfdisk
 		gparted
@@ -117,6 +118,7 @@ environment = {
 		starship
 		swww
 		sxiv
+		unzip
 		vesktop
 		vimix-cursors
 		vulkan-headers
