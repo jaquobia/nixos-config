@@ -102,6 +102,7 @@ environment = {
 		#lxappearance
 		# For a fucking chrome-embedded minecraft mod
 		libcef
+		lutris
 		mangohud
 		unstable.neovim
 		nix-tree
