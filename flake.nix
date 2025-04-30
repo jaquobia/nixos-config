@@ -4,7 +4,11 @@
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 		unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-		quiba-pkgs.url = "github:jaquobia/quibundles-nix";
+		quiba-pkgs = {
+			url = "github:NixOS/nixpkgs/nixos-unstable";
+			# url = "/mnt/data/dev/nix/";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		aagl = {
 			url = "github:ezKEa/aagl-gtk-on-nix/release-24.11";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +20,7 @@
 			system = "x86_64-linux";
 			specialArgs = {
 				unstable = import unstable { inherit system; };
-				quiba-pkgs = import inputs.quiba-pkgs { inherit system; };
+				quiba-pkgs = import inputs.quiba-pkgs { inherit system nixpkgs; };
 			};
 			modules = [
 				#Import old configuration so system does not change
