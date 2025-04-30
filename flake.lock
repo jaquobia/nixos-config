@@ -54,10 +54,45 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1745930157,
+        "narHash": "sha256-y3h3NLnzRSiUkYpnfvnS669zWZLoqqI6NprtLQ+5dck=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "46e634be05ce9dc6d4db8e664515ba10b78151ae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "quiba-pkgs": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1746010848,
+        "narHash": "sha256-XggCo2r4GIDI9RkTUQn+gN3vR4KaIc5tQFRxKqZ/mSE=",
+        "owner": "jaquobia",
+        "repo": "quibundles-nix",
+        "rev": "4db6c8d610cd92d9c10be29bd4ba2845e3c11f67",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jaquobia",
+        "repo": "quibundles-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "aagl": "aagl",
         "nixpkgs": "nixpkgs",
+        "quiba-pkgs": "quiba-pkgs",
         "unstable": "unstable"
       }
     },

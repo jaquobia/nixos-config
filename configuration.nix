@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, unstable, ... }:
+{ config, pkgs, lib, unstable, quiba-pkgs, ... }:
 
 {
   imports =
@@ -93,6 +93,8 @@ environment = {
 		afterglow-cursors-recolored
 		bash
 		btop
+		blockbench
+		quiba-pkgs.doomseeker
 		dunst
 		file-roller
 		unstable.gale
@@ -100,6 +102,7 @@ environment = {
 		gparted
 		sway-contrib.grimshot
 		image-roll
+		krita
 		#lxappearance
 		# For a fucking chrome-embedded minecraft mod
 		libcef
