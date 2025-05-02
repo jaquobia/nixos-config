@@ -62,8 +62,6 @@
 
   nixpkgs.config = {
   	allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-		# "fmod"
-		# "fmod-4.44.64"
     		"steam"
     		"steam-original"
     		"steam-unwrapped"
@@ -90,7 +88,8 @@ environment = {
 		AMD_VULKAN_ICD = "RADV";
 	};
 	systemPackages = with pkgs; [
-		#  wget
+		wget
+		tree
 		# alsa-utils
 		afterglow-cursors-recolored
 		bash
@@ -202,7 +201,7 @@ services = {
 	pipewire = {
 		enable = true;
 		alsa.enable = true;
-		alsa.support32Bit = false;
+		# alsa.support32Bit = false;
 		pulse.enable = true;
 	};
 	blueman.enable = false;
