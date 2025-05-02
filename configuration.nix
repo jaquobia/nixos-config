@@ -62,6 +62,8 @@
 
   nixpkgs.config = {
   	allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+		# "fmod"
+		# "fmod-4.44.64"
     		"steam"
     		"steam-original"
     		"steam-unwrapped"
@@ -131,6 +133,7 @@ environment = {
 		waypaper
 		wl-clipboard
 		unstable.yazi
+		quiba-pkgs.zandronum
 		zathura
 		zig
 		zls
