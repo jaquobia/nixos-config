@@ -88,54 +88,89 @@ environment = {
 		AMD_VULKAN_ICD = "RADV";
 	};
 	systemPackages = with pkgs; [
-		wget
-		tree
+
+		# System tools
 		# alsa-utils
-		afterglow-cursors-recolored
-		bash
 		btop
-		blockbench
-		quiba-pkgs.doomseeker
 		dunst
-		file-roller
-		unstable.gale
 		gptfdisk
 		gparted
+		nix-tree
+		pavucontrol
+		polkit_gnome
+		sxiv
+		tree
+		unzip
+		wget
+		wl-clipboard
+
+		# Desktop Choices
+		afterglow-cursors-recolored
+		bash
+		file-roller
 		sway-contrib.grimshot
 		image-roll
 		krita
-		#lxappearance
-		# For a fucking chrome-embedded minecraft mod
-		libcef
-		lutris
-		mangohud
 		unstable.neovim
-		nix-tree
-		nss
 		nwg-look
 		obsidian
-		pavucontrol
-		polkit_gnome
-		prismlauncher
-		rustup
 		unstable.satty
 		starship
 		swww
-		sxiv
-		unzip
 		vesktop
 		vimix-cursors
+		waypaper
+		wezterm
+		unstable.yazi
+		zathura
+
+		# Games
+		blockbench
+		quiba-pkgs.doomseeker
+		unstable.gale
+		## For a fucking chrome-embedded minecraft mod
+		libcef
+		# nss
+		# lutris
+		mangohud
+		prismlauncher
+		quiba-pkgs.zandronum
+
+		# Nix Tooling
+		nil
+		nixpkgs-fmt
+
+		# Lua Tooling
+		lua-language-server
+
+		# Bash Tooling
+		bash-language-server
+
+		# C Tooling
+		ccls
+
+		# Rust Tooling
+		rust-analyzer
+		rustup
+
+		# Zig Tooling
+		zig
+		zls
+
+		# Java Tooling
+		jdt-language-server
+
+		# Json Tooling
+		spectral-language-server
+		jsonfmt
+
+		# GLSL Tooling
+		glsl_analyzer
+
+		# Vulkan Tooling
 		vulkan-headers
 		vulkan-validation-layers
 		vulkan-tools
-		wezterm
-		waypaper
-		wl-clipboard
-		unstable.yazi
-		quiba-pkgs.zandronum
-		zathura
-		zig
-		zls
 	];
 };
 
