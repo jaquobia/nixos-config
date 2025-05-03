@@ -61,11 +61,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746150819,
-        "narHash": "sha256-VewCqOkk1nThjp0vykheOk4WTGKUZq+RhdpHSVoYu+g=",
+        "lastModified": 1746258609,
+        "narHash": "sha256-gAJsp2MS0z14o70QR+X5qP33TIjgV03Zjiku3ROqQVU=",
         "owner": "Jaquobia",
         "repo": "quibundles-nix",
-        "rev": "f8821a448a78bb3318c853efc34fec6d29bec5ba",
+        "rev": "5733a29be55f92927fb5acad7b35c2196c9b1aff",
         "type": "github"
       },
       "original": {
