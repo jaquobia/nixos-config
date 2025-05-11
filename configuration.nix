@@ -67,7 +67,7 @@
     		"steam-unwrapped"
     		"steam-run"
     		"obsidian"
-		"vintagestory"
+			"vintagestory"
   	];
 	permittedInsecurePackages = [
 		# Required by Vintage Story
@@ -93,6 +93,7 @@ environment = {
 		# alsa-utils
 		btop
 		dunst
+		fzf
 		gptfdisk
 		gparted
 		nix-tree
@@ -134,6 +135,8 @@ environment = {
 		# lutris
 		mangohud
 		prismlauncher
+		protonup-qt
+		unstable.vintagestory
 		quiba-pkgs.zandronum
 
 		# Nix Tooling
@@ -197,6 +200,7 @@ programs = {
 	dconf.enable = true;
 
 	zsh.enable = true;
+	fzf.fuzzyCompletion = true;
 	git.enable = true;
 	ssh.startAgent = true;
 	lazygit = {

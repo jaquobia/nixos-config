@@ -18,7 +18,7 @@
 		nixosConfigurations.quiba-nixos = nixpkgs.lib.nixosSystem rec {
 			system = "x86_64-linux";
 			specialArgs = {
-				unstable = import unstable { inherit system; };
+				unstable = import unstable { inherit system; config = { allowUnfree = true; permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ]; }; };
 				quiba-pkgs = inputs.quiba-pkgs.packages.${system};
 			};
 			modules = [
