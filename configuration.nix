@@ -137,6 +137,7 @@ environment = {
 		prismlauncher
 		protonup-qt
 		unstable.vintagestory
+		sm64baserom
 		quiba-pkgs.zandronum
 
 		# Nix Tooling
