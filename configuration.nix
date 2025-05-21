@@ -96,6 +96,7 @@ environment = {
 		fzf
 		gptfdisk
 		gparted
+		keepassxc
 		nix-tree
 		pavucontrol
 		polkit_gnome
@@ -139,6 +140,7 @@ environment = {
 		unstable.vintagestory
 		unstable.sm64baserom
 		quiba-pkgs.zandronum
+		unstable.sladeUnstable
 
 		# Nix Tooling
 		nil
