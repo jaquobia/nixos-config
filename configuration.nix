@@ -185,9 +185,11 @@ fonts.packages = with pkgs; [
 	nerd-fonts.jetbrains-mono
 	nerd-fonts.dejavu-sans-mono
 	nerd-fonts._0xproto
-	nerd-fonts.departure-mono
-	miracode
-	monocraft
+	nerd-fonts.departure-mono # pixel font
+	monocraft # minecraft pixel font
+	miracode # vectorized monocraft
+	scientifica # pixel font
+	curie # readable scientifica
 	jetbrains-mono
 ];
 
