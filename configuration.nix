@@ -113,7 +113,7 @@ environment = {
 		sway-contrib.grimshot
 		image-roll
 		krita
-		unstable.neovim
+		neovim
 		nwg-look
 		obsidian
 		unstable.satty
@@ -123,13 +123,13 @@ environment = {
 		vimix-cursors
 		waypaper
 		wezterm
-		unstable.yazi
+		yazi
 		zathura
 
 		# Games
 		blockbench
 		quiba-pkgs.doomseeker
-		unstable.gale
+		gale
 		## For a fucking chrome-embedded minecraft mod
 		libcef
 		# nss
@@ -138,9 +138,9 @@ environment = {
 		prismlauncher
 		protonup-qt
 		unstable.vintagestory
-		unstable.sm64baserom
+		sm64baserom
 		quiba-pkgs.zandronum
-		unstable.sladeUnstable
+		sladeUnstable
 
 		# Nix Tooling
 		nil
@@ -182,7 +182,12 @@ environment = {
 
 fonts.enableDefaultPackages = true;
 fonts.packages = with pkgs; [
-	nerdfonts
+	nerd-fonts.jetbrains-mono
+	nerd-fonts.dejavu-sans-mono
+	nerd-fonts._0xproto
+	nerd-fonts.departure-mono
+	miracode
+	monocraft
 	jetbrains-mono
 ];
 

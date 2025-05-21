@@ -2,7 +2,8 @@
 	description = "Quiba's NixOS system configuration";
 
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+		nixpkgs2411.url = "github:NixOS/nixpkgs/nixos-24.11";
 		unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 		quiba-pkgs = {
 			url = "github:Jaquobia/quibundles-nix/";
@@ -10,7 +11,7 @@
 		};
 		aagl = {
 			url = "github:ezKEa/aagl-gtk-on-nix/release-24.11";
-			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.nixpkgs.follows = "nixpkgs2411";
 		};
 	};
 
