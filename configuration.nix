@@ -62,12 +62,14 @@
 
   nixpkgs.config = {
   	allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    		"steam"
-    		"steam-original"
-    		"steam-unwrapped"
-    		"steam-run"
-    		"obsidian"
-			"vintagestory"
+		"fmod"
+		"steam"
+		"steam-original"
+		"steam-unwrapped"
+		"steam-run"
+		"obsidian"
+		"vintagestory"
+		"sm64coopdx"
   	];
 	permittedInsecurePackages = [
 		# Required by Vintage Story
@@ -139,6 +141,7 @@ environment = {
 		protonup-qt
 		unstable.vintagestory
 		sm64baserom
+		quiba-pkgs.sm64coopdx
 		quiba-pkgs.zandronum
 		sladeUnstable
 

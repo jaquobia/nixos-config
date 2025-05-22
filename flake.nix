@@ -3,24 +3,27 @@
 
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-		nixpkgs2411.url = "github:NixOS/nixpkgs/nixos-24.11";
 		unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 		quiba-pkgs = {
 			url = "github:Jaquobia/quibundles-nix/";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		aagl = {
-			url = "github:ezKEa/aagl-gtk-on-nix/release-24.11";
-			inputs.nixpkgs.follows = "nixpkgs2411";
+			url = "github:ezKEa/aagl-gtk-on-nix/release-25.05";
+			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
 
-	outputs = { self, nixpkgs, unstable, aagl, ... }@inputs: {
-		nixosConfigurations.quiba-nixos = nixpkgs.lib.nixosSystem rec {
-			system = "x86_64-linux";
+	outputs = { self, nixpkgs, unstable, aagl, ... }@inputs: 
+	let
+	system = "x86_64-linux";
+	pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+	in
+	{
+		nixosConfigurations.quiba-nixos = nixpkgs.lib.nixosSystem {
 			specialArgs = {
 				unstable = import unstable { inherit system; config = { allowUnfree = true; permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ]; }; };
-				quiba-pkgs = inputs.quiba-pkgs.packages.${system};
+				quiba-pkgs = import inputs.quiba-pkgs { inherit system pkgs; };
 			};
 			modules = [
 				#Import old configuration so system does not change
