@@ -2,7 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, unstable, quiba-pkgs, ... }:
+{ config, pkgs, lib, 
+# unstable, quiba-pkgs, 
+... }:
 
 {
   imports =
@@ -95,6 +97,7 @@ environment = {
 		# alsa-utils
 		btop
 		dunst
+		fd
 		fzf
 		gptfdisk
 		gparted
@@ -103,12 +106,15 @@ environment = {
 		pavucontrol
 		polkit_gnome
 		sxiv
+		ripgrep
 		tree
 		unzip
 		wget
 		wl-clipboard
 
 		# Desktop Choices
+		afetch
+		leaf
 		afterglow-cursors-recolored
 		bash
 		file-roller
@@ -126,12 +132,13 @@ environment = {
 		waypaper
 		wezterm
 		yazi
+		# xdg-desktop-portal-termfilechooser
 		zathura
 
 		# Games
 		blockbench
-		quiba-pkgs.doomseeker
-		gale
+		quiba.doomseeker
+		unstable.gale
 		## For a fucking chrome-embedded minecraft mod
 		libcef
 		# nss
@@ -139,10 +146,10 @@ environment = {
 		mangohud
 		prismlauncher
 		protonup-qt
-		unstable.vintagestory
+		vintagestory
 		sm64baserom
-		quiba-pkgs.sm64coopdx
-		quiba-pkgs.zandronum
+		quiba.sm64coopdx
+		quiba.zandronum
 		sladeUnstable
 
 		# Nix Tooling
@@ -157,6 +164,7 @@ environment = {
 
 		# C Tooling
 		ccls
+		cmake-language-server
 
 		# Rust Tooling
 		rust-analyzer
@@ -217,7 +225,6 @@ programs = {
 	git.enable = true;
 	ssh.startAgent = true;
 	lazygit = {
-		package = unstable.lazygit;
 		enable = true;
 	};
 	sway.enable = true;
@@ -242,7 +249,6 @@ programs = {
 		enable = true;
 	};
 	waybar = {
-		package = unstable.waybar;
 		enable = true;
 	};
 };
@@ -280,6 +286,14 @@ systemd = {
 	};
 };
 
+xdg.portal.config = {
+	# sway = {
+	# 	default = ["gtk"];
+	# 	"org.freedesktop.impl.portal.FileChooser"=["termfilechooser"];
+	# 	"org.freedesktop.impl.portal.ScreenCast"=["wlr"];
+	# 	"org.freedesktop.impl.portal.Screenshot"=["wlr"];
+	# };
+};
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
