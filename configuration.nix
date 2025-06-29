@@ -110,6 +110,7 @@ environment = {
 		tree
 		unzip
 		wget
+		wlroots
 		wl-clipboard
 
 		# Desktop Choices
@@ -121,7 +122,7 @@ environment = {
 		sway-contrib.grimshot
 		image-roll
 		krita
-		neovim
+		unstable.neovim
 		nwg-look
 		obsidian
 		unstable.satty
@@ -146,7 +147,7 @@ environment = {
 		mangohud
 		prismlauncher
 		protonup-qt
-		vintagestory
+		unstable.vintagestory
 		sm64baserom
 		quiba.sm64coopdx
 		quiba.zandronum
@@ -255,7 +256,7 @@ programs = {
 
 services = {
 	# Required for thunar-volman
-	# gvfs.enable = true;
+	gvfs.enable = true;
 	pipewire = {
 		enable = true;
 		alsa.enable = true;
@@ -298,14 +299,14 @@ xdg.portal.config = {
   # started in user sessions.
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
-    enable = true;
+    # enable = true;
     # enableSSHSupport = true;
   };
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
