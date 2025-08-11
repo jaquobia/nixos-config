@@ -2,17 +2,24 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, 
-# unstable, quiba-pkgs, 
-... }:
+{
+  config,
+  pkgs,
+  lib,
+  # unstable, quiba-pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -20,7 +27,7 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.hostName = "quiba-nixos"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -58,267 +65,271 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Jaquobia";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
   };
 
   nixpkgs.config = {
-  	allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-		"fmod"
-		"steam"
-		"steam-original"
-		"steam-unwrapped"
-		"steam-run"
-		"obsidian"
-		"vintagestory"
-		"sm64coopdx"
-  	];
-	permittedInsecurePackages = [
-		# Required by Vintage Story
-		"dotnet-runtime-7.0.20"
-	];
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "fmod"
+        "steam"
+        "steam-original"
+        "steam-unwrapped"
+        "steam-run"
+        "obsidian"
+        "vintagestory"
+        "sm64coopdx"
+      ];
+    permittedInsecurePackages = [
+      # Required by Vintage Story
+      "dotnet-runtime-7.0.20"
+    ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-environment = {
-	sessionVariables = {
-		NIXOS_OZONE_WL = "1";
-	};
-	variables = {
-		EDITOR = "nvim";
-		VISUAL = "nvim";
-		SYSTEMD_EDITOR = "nvim";
-		AMD_VULKAN_ICD = "RADV";
-	};
-	systemPackages = with pkgs; [
+  environment = {
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+    };
+    variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      SYSTEMD_EDITOR = "nvim";
+      AMD_VULKAN_ICD = "RADV";
+    };
+    systemPackages = with pkgs; [
 
-		# System tools
-		# alsa-utils
-		amdgpu_top
-		btop
-		dunst
-		fd
-		fzf
-		gptfdisk
-		gparted
-		keepassxc
-		nix-tree
-		pavucontrol
-		polkit_gnome
-		sxiv
-		ripgrep
-		tree
-		unzip
-		wget
-		wlroots
-		wl-clipboard
-		xorg.xprop
+      # System tools
+      # alsa-utils
+      amdgpu_top
+      btop
+      dunst
+      fd
+      fzf
+      gptfdisk
+      gparted
+      keepassxc
+      nix-tree
+      pavucontrol
+      polkit_gnome
+      sxiv
+      ripgrep
+      tree
+      unzip
+      wget
+      wlroots
+      wl-clipboard
+      xorg.xprop
 
-		# Desktop Choices
-		afetch
-		leaf
-		afterglow-cursors-recolored
-		bash
-		file-roller
-		sway-contrib.grimshot
-		image-roll
-		krita
-		unstable.neovim
-		neovide
-		nwg-look
-		obsidian
-		unstable.satty
-		starship
-		swww
-		vesktop
-		vimix-cursors
-		waypaper
-		wezterm
-		yazi
-		# xdg-desktop-portal-termfilechooser
-		zathura
+      # Desktop Choices
+      afetch
+      leaf
+      afterglow-cursors-recolored
+      bash
+      file-roller
+      sway-contrib.grimshot
+      image-roll
+      krita
+      unstable.neovim
+      neovide
+      nwg-look
+      obsidian
+      unstable.satty
+      starship
+      swww
+      vesktop
+      vimix-cursors
+      waypaper
+      wezterm
+      yazi
+      # xdg-desktop-portal-termfilechooser
+      zathura
 
-		# Games
-		blockbench
-		quiba.doomseeker
-		unstable.gale
-		gamemode
-		## For a fucking chrome-embedded minecraft mod
-		libcef
-		# nss
-		# lutris
-		mangohud
-		prismlauncher
-		protonup-qt
-		unstable.vintagestory
-		satisfactorymodmanager
-		sm64baserom
-		quiba.sm64coopdx
-		quiba.zandronum
-		sladeUnstable
+      # Games
+      blockbench
+      quiba.doomseeker
+      unstable.gale
+      gamemode
+      ## For a fucking chrome-embedded minecraft mod
+      libcef
+      # nss
+      # lutris
+      mangohud
+      prismlauncher
+      protonup-qt
+      unstable.vintagestory
+      satisfactorymodmanager
+      sm64baserom
+      quiba.sm64coopdx
+      quiba.zandronum
+      sladeUnstable
 
-		# Nix Tooling
-		nil
-		nixd
-		nixfmt-rfc-style
+      # Nix Tooling
+      nil
+      nixd
+      nixfmt-rfc-style
 
-		# Lua Tooling
-		lua-language-server
+      # Lua Tooling
+      lua-language-server
 
-		# Bash Tooling
-		bash-language-server
+      # Bash Tooling
+      bash-language-server
 
-		# C Tooling
-		ccls
-		cmake-language-server
+      # C Tooling
+      ccls
+      cmake-language-server
 
-		# Rust Tooling
-		rust-analyzer
-		rustup
+      # Rust Tooling
+      rust-analyzer
+      rustup
 
-		# Zig Tooling
-		zig
-		zls
+      # Zig Tooling
+      zig
+      zls
 
-		# Java Tooling
-		jdt-language-server
+      # Java Tooling
+      jdt-language-server
 
-		# Json Tooling
-		spectral-language-server
-		jsonfmt
+      # Json Tooling
+      spectral-language-server
+      jsonfmt
 
-		# GLSL Tooling
-		glsl_analyzer
+      # GLSL Tooling
+      glsl_analyzer
 
-		# Vulkan Tooling
-		vulkan-headers
-		vulkan-validation-layers
-		vulkan-tools
-	];
-};
+      # Vulkan Tooling
+      vulkan-headers
+      vulkan-validation-layers
+      vulkan-tools
+    ];
+  };
 
-fonts.enableDefaultPackages = true;
-fonts.packages = with pkgs; [
-	nerd-fonts.jetbrains-mono
-	nerd-fonts.dejavu-sans-mono
-	nerd-fonts._0xproto
-	nerd-fonts.departure-mono # pixel font
-	monocraft # minecraft pixel font
-	miracode # vectorized monocraft
-	scientifica # pixel font
-	curie # readable scientifica
-	jetbrains-mono
-];
+  fonts.enableDefaultPackages = true;
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.dejavu-sans-mono
+    nerd-fonts._0xproto
+    nerd-fonts.departure-mono # pixel font
+    monocraft # minecraft pixel font
+    miracode # vectorized monocraft
+    scientifica # pixel font
+    curie # readable scientifica
+    jetbrains-mono
+  ];
 
-hardware = {
-	graphics = {
-		enable = true;
-		enable32Bit = true;
-		# extraPackages = with pkgs; [ libva ];
-	};
-	bluetooth = {
-		enable = true;
-		powerOnBoot = true;
-	};
-};
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      # extraPackages = with pkgs; [ libva ];
+    };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+  };
 
+  programs = {
+    dconf.enable = true;
 
-programs = {
-	dconf.enable = true;
+    zsh.enable = true;
+    fzf.fuzzyCompletion = true;
+    git.enable = true;
+    ssh.startAgent = true;
+    lazygit = {
+      enable = true;
+    };
+    sway.enable = true;
+    niri.enable = true;
+    firefox.enable = true;
+    # yazi = {
+    # 	package = unstable.yazi;
+    # 	enable = true;
+    # };
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        # thunar-volman
+      ];
+    };
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
+    obs-studio = {
+      enable = true;
+    };
+    waybar = {
+      enable = true;
+    };
 
-	zsh.enable = true;
-	fzf.fuzzyCompletion = true;
-	git.enable = true;
-	ssh.startAgent = true;
-	lazygit = {
-		enable = true;
-	};
-	sway.enable = true;
-	niri.enable = true;
-	firefox.enable = true;
-	# yazi = {
-	# 	package = unstable.yazi;
-	# 	enable = true;
-	# };
-	thunar = {
-		enable = true;
-		plugins = with pkgs.xfce; [ 
-			thunar-archive-plugin 
-			# thunar-volman 
-		];
-	};
-	steam = {
-		enable = true;
-		remotePlay.openFirewall = true;
-		dedicatedServer.openFirewall = true;
-	};
-	obs-studio = {
-		enable = true;
-	};
-	waybar = {
-		enable = true;
-	};
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        openssl
+        alsa-lib
+        glibc
+        libgcc
+        wayland
+        libxkbcommon
+        vulkan-headers
+        vulkan-loader
+        libGL
+        libGLU
+        SDL2
+      ];
+    };
+  };
 
-	nix-ld = {
-		enable = true;
-		libraries = with pkgs; [
-			openssl
-			alsa-lib
-			glibc
-			libgcc
-			wayland
-			libxkbcommon
-            vulkan-headers
-            vulkan-loader
-            libGL
-            libGLU
-            SDL2
-		];
-	};
-};
+  services = {
+    # Required for thunar-volman
+    gvfs.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      # alsa.support32Bit = false;
+      pulse.enable = true;
+    };
+    blueman.enable = false;
+  };
 
-services = {
-	# Required for thunar-volman
-	gvfs.enable = true;
-	pipewire = {
-		enable = true;
-		alsa.enable = true;
-		# alsa.support32Bit = false;
-		pulse.enable = true;
-	};
-	blueman.enable = false;
-};
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+  };
 
-security = {
-	polkit.enable = true;
-	rtkit.enable = true;
-};
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "poklit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
 
-systemd = {
-	user.services.polkit-gnome-authentication-agent-1 = {
-		description = "poklit-gnome-authentication-agent-1";
-		wantedBy = [ "graphical-session.target" ];
-		wants = [ "graphical-session.target" ];
-		after = [ "graphical-session.target" ];
-		serviceConfig = {
-			Type = "simple";
-			ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-			Restart = "on-failure";
-			RestartSec = 1;
-			TimeoutStopSec = 10;
-		};
-	};
-};
-
-xdg.portal.config = {
-	# sway = {
-	# 	default = ["gtk"];
-	# 	"org.freedesktop.impl.portal.FileChooser"=["termfilechooser"];
-	# 	"org.freedesktop.impl.portal.ScreenCast"=["wlr"];
-	# 	"org.freedesktop.impl.portal.Screenshot"=["wlr"];
-	# };
-};
+  xdg.portal.config = {
+    # sway = {
+    # 	default = ["gtk"];
+    # 	"org.freedesktop.impl.portal.FileChooser"=["termfilechooser"];
+    # 	"org.freedesktop.impl.portal.ScreenCast"=["wlr"];
+    # 	"org.freedesktop.impl.portal.Screenshot"=["wlr"];
+    # };
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
