@@ -95,6 +95,7 @@ environment = {
 
 		# System tools
 		# alsa-utils
+		amdgpu_top
 		btop
 		dunst
 		fd
@@ -112,6 +113,7 @@ environment = {
 		wget
 		wlroots
 		wl-clipboard
+		xorg.xprop
 
 		# Desktop Choices
 		afetch
@@ -123,6 +125,7 @@ environment = {
 		image-roll
 		krita
 		unstable.neovim
+		neovide
 		nwg-look
 		obsidian
 		unstable.satty
@@ -140,6 +143,7 @@ environment = {
 		blockbench
 		quiba.doomseeker
 		unstable.gale
+		gamemode
 		## For a fucking chrome-embedded minecraft mod
 		libcef
 		# nss
@@ -148,6 +152,7 @@ environment = {
 		prismlauncher
 		protonup-qt
 		unstable.vintagestory
+		satisfactorymodmanager
 		sm64baserom
 		quiba.sm64coopdx
 		quiba.zandronum
@@ -155,7 +160,8 @@ environment = {
 
 		# Nix Tooling
 		nil
-		nixpkgs-fmt
+		nixd
+		nixfmt-rfc-style
 
 		# Lua Tooling
 		lua-language-server
@@ -229,6 +235,7 @@ programs = {
 		enable = true;
 	};
 	sway.enable = true;
+	niri.enable = true;
 	firefox.enable = true;
 	# yazi = {
 	# 	package = unstable.yazi;
@@ -251,6 +258,23 @@ programs = {
 	};
 	waybar = {
 		enable = true;
+	};
+
+	nix-ld = {
+		enable = true;
+		libraries = with pkgs; [
+			openssl
+			alsa-lib
+			glibc
+			libgcc
+			wayland
+			libxkbcommon
+            vulkan-headers
+            vulkan-loader
+            libGL
+            libGLU
+            SDL2
+		];
 	};
 };
 
