@@ -28,6 +28,7 @@
 
   networking.hostName = "quiba-nixos"; # Define your hostname.
   networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
+  networking.firewall.interfaces.wlp5s0.allowedTCPPorts = [ 25565 49042 ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -122,6 +123,7 @@
       ripgrep
       tree
       unzip
+	  _7zz
       wget
       wlroots
       wl-clipboard
@@ -135,11 +137,13 @@
       file-roller
       sway-contrib.grimshot
       image-roll
+      jetbrains.idea-community
       krita
       unstable.neovim
       neovide
       nwg-look
       obsidian
+	  qbittorrent
       unstable.satty
       starship
       swww
@@ -164,7 +168,7 @@
       prismlauncher
       protonup-qt
       unstable.vintagestory
-      satisfactorymodmanager
+      # satisfactorymodmanager
       sm64baserom
       quiba.sm64coopdx
       quiba.zandronum
