@@ -28,7 +28,16 @@
 
   networking.hostName = "quiba-nixos"; # Define your hostname.
   networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-  networking.firewall.interfaces.wlp5s0.allowedTCPPorts = [ 25565 49042 ];
+  networking.firewall.interfaces.wlp5s0 = {
+    allowedTCPPorts = [
+      25565
+      49042
+    ];
+    allowedUDPPorts = [
+      25565
+      49042
+    ];
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -38,7 +47,8 @@
   # networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone =
+    "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -69,6 +79,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "openrazer"
     ];
     packages = with pkgs; [ ];
   };
@@ -82,6 +93,7 @@
         "steam-original"
         "steam-unwrapped"
         "steam-run"
+        "necesse-server"
         "obsidian"
         "vintagestory"
         "sm64coopdx"
@@ -123,11 +135,12 @@
       ripgrep
       tree
       unzip
-	  _7zz
+      _7zz
       wget
       wlroots
       wl-clipboard
       xorg.xprop
+      openrazer-daemon
 
       # Desktop Choices
       afetch
@@ -143,7 +156,8 @@
       neovide
       nwg-look
       obsidian
-	  qbittorrent
+      qbittorrent
+      unstable.satisfactorymodmanager
       unstable.satty
       starship
       swww
@@ -160,19 +174,18 @@
       quiba.doomseeker
       unstable.gale
       gamemode
-      ## For a fucking chrome-embedded minecraft mod
-      libcef
       # nss
       # lutris
       mangohud
+      necesse-server
       prismlauncher
       protonup-qt
       unstable.vintagestory
-      # satisfactorymodmanager
       sm64baserom
       quiba.sm64coopdx
       quiba.zandronum
       sladeUnstable
+      xwayland-satellite
 
       # Nix Tooling
       nil
@@ -198,6 +211,7 @@
       zls
 
       # Java Tooling
+      unstable.zulu25
       jdt-language-server
 
       # Json Tooling
@@ -236,6 +250,10 @@
     bluetooth = {
       enable = true;
       powerOnBoot = true;
+    };
+    openrazer = {
+      enable = true;
+      users = [ "quiba" ];
     };
   };
 
@@ -289,6 +307,7 @@
         libGL
         libGLU
         SDL2
+        xwayland-satellite
       ];
     };
   };
