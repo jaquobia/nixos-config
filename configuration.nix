@@ -47,8 +47,7 @@
   # networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone =
-    "America/New_York";
+  time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -88,6 +87,9 @@
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
+        "dwarf-fortress"
+        "spacefox-theme"
+        "ironhand-theme"
         "fmod"
         "steam"
         "steam-original"
@@ -147,6 +149,8 @@
       leaf
       afterglow-cursors-recolored
       bash
+      easyeffects
+      deepfilternet
       file-roller
       sway-contrib.grimshot
       image-roll
@@ -171,7 +175,10 @@
 
       # Games
       blockbench
-      quiba.doomseeker
+      # quiba.doomseeker
+      dwarf-fortress
+      dwarf-fortress-packages.themes.spacefox
+      dwarf-fortress-packages.themes.ironhand
       unstable.gale
       gamemode
       # nss
@@ -182,8 +189,8 @@
       protonup-qt
       unstable.vintagestory
       sm64baserom
-      quiba.sm64coopdx
-      quiba.zandronum
+      # quiba.sm64coopdx
+      # quiba.zandronum
       sladeUnstable
       xwayland-satellite
 
