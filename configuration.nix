@@ -78,7 +78,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "openrazer"
+      # "openrazer"
     ];
     packages = with pkgs; [ ];
   };
@@ -142,13 +142,14 @@
       wlroots
       wl-clipboard
       xorg.xprop
-      openrazer-daemon
+      # openrazer-daemon
 
       # Desktop Choices
       afetch
       leaf
       afterglow-cursors-recolored
       bash
+	  blender
       easyeffects
       deepfilternet
       file-roller
@@ -284,7 +285,7 @@
     zsh.enable = true;
     fzf.fuzzyCompletion = true;
     git.enable = true;
-    ssh.startAgent = true;
+    # ssh.startAgent = true;
     lazygit = {
       enable = true;
     };
