@@ -171,9 +171,11 @@
       wezterm
       yazi
       # xdg-desktop-portal-termfilechooser
-      zathura
+      (zathura.override { useMupdf = true; })
 
       # Games
+      heroic
+
       blockbench
       # quiba.doomseeker
       dwarf-fortress
@@ -267,6 +269,18 @@
   programs = {
     dconf.enable = true;
 
+    # Execute appimage's directly
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
+    java = {
+      enable = true;
+      package = pkgs.unstable.zulu25;
+      # Enable to execute jar's directly
+      binfmt = false;
+    };
+
     zsh.enable = true;
     fzf.fuzzyCompletion = true;
     git.enable = true;
@@ -295,6 +309,7 @@
     };
     obs-studio = {
       enable = true;
+      plugins = [ pkgs.obs-studio-plugins.wlrobs ];
     };
     waybar = {
       enable = true;
@@ -353,6 +368,17 @@
   };
 
   xdg.portal.config = {
+    common = {
+      default = [
+        "gtk"
+      ];
+    };
+    niri = {
+      default = [
+        "gtk"
+        "gnome"
+      ];
+    };
     # sway = {
     # 	default = ["gtk"];
     # 	"org.freedesktop.impl.portal.FileChooser"=["termfilechooser"];
