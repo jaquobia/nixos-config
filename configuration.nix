@@ -123,7 +123,6 @@
       AMD_VULKAN_ICD = "RADV";
     };
     systemPackages = with pkgs; [
-
       # System tools
       # alsa-utils
       amdgpu_top
@@ -159,7 +158,7 @@
       file-roller
       sway-contrib.grimshot
       image-roll
-      jetbrains.idea-community
+      jetbrains.idea-oss
       krita
       unstable.neovim
       neovide
@@ -192,7 +191,16 @@
       # lutris
       mangohud
       necesse-server
-      prismlauncher
+      (prismlauncher.override {
+        additionalLibs = [ ];
+        jdks = [
+          jdk8
+          jdk17
+          jdk21
+          jdk25
+          javaPackages.compiler.temurin-bin.jdk-25
+        ];
+      })
       protonup-qt
       unstable.vintagestory
       sm64baserom
