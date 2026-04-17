@@ -78,7 +78,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      # "openrazer"
+      "openrazer"
     ];
     packages = with pkgs; [ ];
   };
@@ -87,9 +87,7 @@
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
-        "dwarf-fortress"
-        "spacefox-theme"
-        "ironhand-theme"
+		"dwarf-fortress"
         "fmod"
         "steam"
         "steam-original"
@@ -100,10 +98,7 @@
         "vintagestory"
         "sm64coopdx"
       ];
-    permittedInsecurePackages = [
-      # Required by Vintage Story
-      "dotnet-runtime-7.0.20"
-    ];
+    permittedInsecurePackages = [ ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -183,8 +178,6 @@
       blockbench
       # quiba.doomseeker
       dwarf-fortress
-      dwarf-fortress-packages.themes.spacefox
-      dwarf-fortress-packages.themes.ironhand
       unstable.gale
       gamemode
       # nss
