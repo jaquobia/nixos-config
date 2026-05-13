@@ -87,7 +87,7 @@
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
-		"dwarf-fortress"
+        "dwarf-fortress"
         "fmod"
         "steam"
         "steam-original"
@@ -128,6 +128,7 @@
       gptfdisk
       gparted
       keepassxc
+	  mpv
       nix-tree
       pavucontrol
       polkit_gnome
