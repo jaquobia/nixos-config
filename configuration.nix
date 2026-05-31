@@ -28,6 +28,7 @@
 
   networking.hostName = "quiba-nixos"; # Define your hostname.
   networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
+  networking.wireless.userControlled = true;
   networking.firewall.interfaces.wlp5s0 = {
     allowedTCPPorts = [
       25565
@@ -128,7 +129,7 @@
       gptfdisk
       gparted
       keepassxc
-	  mpv
+      mpv
       nix-tree
       pavucontrol
       polkit_gnome
@@ -140,7 +141,7 @@
       wget
       wlroots
       wl-clipboard
-      xorg.xprop
+      xprop
       # openrazer-daemon
 
       # Desktop Choices
@@ -164,7 +165,7 @@
       unstable.satisfactorymodmanager
       unstable.satty
       starship
-      swww
+      awww
       vesktop
       vimix-cursors
       waypaper
@@ -206,7 +207,7 @@
       # Nix Tooling
       nil
       nixd
-      nixfmt-rfc-style
+      nixfmt
 
       # Lua Tooling
       lua-language-server
@@ -304,7 +305,7 @@
     # };
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
+      plugins = with pkgs; [
         thunar-archive-plugin
         # thunar-volman
       ];
@@ -381,7 +382,7 @@
       ];
     };
     niri = {
-      default = [
+      default = lib.mkForce [
         "gtk"
         "gnome"
       ];

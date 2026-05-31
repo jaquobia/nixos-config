@@ -8,10 +8,10 @@
       url = "github:Jaquobia/quibundles-nix/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # aagl = {
+    #   url = "github:ezKEa/aagl-gtk-on-nix/release-26.05";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
@@ -19,7 +19,7 @@
       self,
       nixpkgs,
       unstable,
-      aagl,
+      # aagl,
       ...
     }@inputs:
     let
@@ -61,10 +61,10 @@
           #Import old configuration so system does not change
           ./configuration.nix
           {
-            imports = [ aagl.nixosModules.default ];
-            nix.settings = aagl.nixConfig; # Set up Cachix
-            programs.anime-game-launcher.enable = true;
-            programs.honkers-railway-launcher.enable = true;
+            # imports = [ aagl.nixosModules.default ];
+            # nix.settings = aagl.nixConfig; # Set up Cachix
+            # programs.anime-game-launcher.enable = true;
+            # programs.honkers-railway-launcher.enable = true;
           }
         ];
       };
