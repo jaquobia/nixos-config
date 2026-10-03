@@ -139,6 +139,7 @@
       unzip
       _7zz
       wget
+	  wirelesstools
       wlroots
       wl-clipboard
       xprop
@@ -168,6 +169,7 @@
       awww
       vesktop
       vimix-cursors
+	  waydroid
       waypaper
       wezterm
       yazi
@@ -256,6 +258,9 @@
     scientifica # pixel font
     curie # readable scientifica
     jetbrains-mono
+	notonoto
+	notonoto-35
+	noto-fonts
   ];
 
   hardware = {
