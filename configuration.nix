@@ -26,18 +26,27 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.hostName = "quiba-nixos"; # Define your hostname.
-  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-  networking.wireless.userControlled = true;
-  networking.firewall.interfaces.wlp5s0 = {
-    allowedTCPPorts = [
-      25565
-      49042
-    ];
-    allowedUDPPorts = [
-      25565
-      49042
-    ];
+  networking = {
+    hostName = "quiba-nixos"; # Define your hostname.
+    wireless = {
+      enable = false; # Enables wireless support via wpa_supplicant.
+      iwd.enable = true; # this is mutually exclusive with wireless.enable
+      userControlled = false;
+    };
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
+    firewall.interfaces.wlp5s0 = {
+      allowedTCPPorts = [
+        25565
+        49042
+      ];
+      allowedUDPPorts = [
+        25565
+        49042
+      ];
+    };
   };
 
   # Configure network proxy if necessary
@@ -45,7 +54,6 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  # networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -139,7 +147,7 @@
       unzip
       _7zz
       wget
-	  wirelesstools
+      wirelesstools
       wlroots
       wl-clipboard
       xprop
@@ -169,7 +177,6 @@
       awww
       vesktop
       vimix-cursors
-	  waydroid
       waypaper
       wezterm
       yazi
@@ -178,7 +185,6 @@
 
       # Games
       heroic
-
       blockbench
       # quiba.doomseeker
       dwarf-fortress
@@ -188,6 +194,7 @@
       # lutris
       mangohud
       necesse-server
+      openttd
       (prismlauncher.override {
         additionalLibs = [ ];
         jdks = [
@@ -246,6 +253,10 @@
       vulkan-tools
     ];
   };
+  virtualisation.waydroid = {
+    enable = true;
+    package = pkgs.waydroid-nftables;
+  };
 
   fonts.enableDefaultPackages = true;
   fonts.packages = with pkgs; [
@@ -258,9 +269,9 @@
     scientifica # pixel font
     curie # readable scientifica
     jetbrains-mono
-	notonoto
-	notonoto-35
-	noto-fonts
+    notonoto
+    notonoto-35
+    noto-fonts
   ];
 
   hardware = {
@@ -317,6 +328,9 @@
     };
     steam = {
       enable = true;
+      extraPackages = with pkgs; [
+        libxcrypt-legacy
+      ];
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
